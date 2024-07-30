@@ -1,0 +1,15 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}
+    Авторизация
+{% endblock %}
+
+
+{% block content %}
+    <h2>Вход</h2>
+    <form class="form" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{ login_form }}
+        <button type="submit">Войти</button>
+    </form>
+{% endblock content %}

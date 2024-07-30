@@ -1,0 +1,42 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Пост {{ post.title }}{% endblock title %}
+
+{% block content %}
+<div>
+    <div class="post_font">
+        <b>Заголовок:</b> {{ post.title }}<br/>
+        <b>Описание:</b> {{ post.content }}<br/>
+        <b>Категория:</b> {{ post.category.name }}<br/>
+        <b>Дата создания:</b> {{ post.created_at }}<br/>
+        <b>Автор:</b> {{ post.author.username }}<br/>
+    </div>
+
+    <hr />
+
+    <div class="comment_form">
+        <form class="form" action="{% url 'add_comment' pk=post.id %}" method="post">
+            {% csrf_token %}
+            {{ comment_form }}
+            <button>Отправить</button>
+        </form>
+    </div>
+
+    <hr />
+
+    <div>
+        <h2>Комментарии</h2>
+    </div>
+
+    <div class="comments_list">
+        {% for comment in comments %}
+            <div class="comment">
+                <b>Автор:</b> {{ comment.author.username }}<br/>
+                <b>Комментарий:</b> {{ comment.comment }}<br/>
+                <b>Дата создания:</b> {{ comment.created_at }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block content %}
+    <div class="main_content">
+        <div class="posts">
+            {% for post in posts %}
+                <a href="{% url 'post_detail' pk=post.id %}">
+                    <div class="item">
+                        <p>{{ post.title }}<br/>
+                            {{ post.category.name }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="categ_list">
+            <h2>Категории</h2>
+            {% for category in all_author %}
+                <div>
+                    <a class="button" href="?id={{ category.id }}">{{ category.name }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

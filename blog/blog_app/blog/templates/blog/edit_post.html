@@ -1,0 +1,11 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Добавить запись{% endblock %}
+
+{% block content %}
+    <form class="form" action="" method="POST">
+        {% csrf_token%}
+        {{ form }}
+        <button>Сохранить</button>
+    </form>
+{% endblock content %}

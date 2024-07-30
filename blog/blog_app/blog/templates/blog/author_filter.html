@@ -1,0 +1,26 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Авторы{% endblock %}
+
+{% block content %}
+    <div class="main_content">
+        <div class="posts">
+            {% for post in posts %}
+                <a href="{% url 'post_detail' pk=post.id %}">
+                    <div class="item">
+                        <p>{{ post.title }}<br/>
+                            {{ post.category.name }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="categ_list">
+            <h2>Авторы</h2>
+            {% for autor in all_author %}
+                <div>
+                    <a class="button" href="?id={{ autor.id }}">{{ autor.username }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

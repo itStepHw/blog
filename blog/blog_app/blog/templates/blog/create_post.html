@@ -1,0 +1,29 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Добавить запись{% endblock %}
+
+{% block content %}
+<div>
+    <form class="form" action="" method="POST">
+        {% csrf_token%}
+        {{ form }}
+        <button>Сохранить</button>
+    </form>
+<div>
+
+
+    <hr />
+
+    <h2>Посты: </h2>
+    <div class="posts_list_admin">
+        {% for post in posts %}
+        <p>{{ post.title }} - <a class="button" href="{% url 'edit_post' pk=post.id  %}">Изменить</a> | <a class="button" href="{% url 'delete_post' pk=post.id  %}">Удалить</a></p>
+        {% endfor %}
+    </div>
+
+
+    </div>
+</div>
+
+
+{% endblock content %}

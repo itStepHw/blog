@@ -1,0 +1,36 @@
+{% extends 'blog/base/base.html' %}
+
+{% block title %}Добавить категорию{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+    <form class="form" action="" method="post">
+        {% csrf_token%}
+        {{ form }}
+        <button>Сохранить</button>
+    </form>
+</div>
+
+<br/>
+<hr />
+<br/>
+
+<h2>Категории:</h2>
+<br>
+<div  class="category_list">
+    {% for category in categorys %}
+
+    <div>
+        <p>{{ category.name }} - <a class="button" href="{% url 'edit_category' pk=category.id  %}">Изменить</a> | <a class="button" href="{% url 'delete_category' pk=category.id  %}">Удалить</a></p>
+    </div>
+
+        {% empty %}
+            <p>Нет категорий</p>
+    {% endfor %}
+</div>
+</div>
+
+
+
+{% endblock content %}

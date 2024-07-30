@@ -1,0 +1,15 @@
+<div class="header">
+    <div class="logo"><a href="{% url 'index' %}">Блог</a></div>
+    <div class="header_main">
+        <div class="header_buttons">
+            {% if request.user.is_authenticated %}
+<!--            <div><a href="{% url 'create_post' %}">Добавить пост</a></div>-->
+<!--            <div><a href="{% url 'create_category' %}">Категории</a></div>-->
+            <div><a href="{% url 'logout' %}">Выйти</a></div>
+            {% else %}
+            <div><a href="{% url 'register' %}">Регистрация</a></div>
+            <div><a href="{% url 'login' %}">Авторизация</a></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
